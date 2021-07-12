@@ -3,10 +3,10 @@ from Thread_Neurone import Threading
 from profile import *
 
 class Foret():
-    def __init__(self, nbr_Neurones = 1, name = "poid"):
+    def __init__(self, nbr_Neurones = 1, name = "poid", show_confidence = False):
         self.arbres = []
         for i in range(nbr_Neurones):
-            self.arbres.append(Threading("csv/" + name + str(i+1)))
+            self.arbres.append(Threading("csv/" + name + str(i+1), show_confidence))
     
     def training(self, lst_users, repeat = 1):
         for _ in range(repeat):

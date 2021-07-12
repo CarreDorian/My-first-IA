@@ -2,8 +2,8 @@ from Process_Neurones import Neurones
 from threading import Thread
 
 class Threading(Neurones, Thread):
-    def __init__(self, name):
-        Neurones.__init__(self, name)
+    def __init__(self, name, show_confidence = False):
+        Neurones.__init__(self, name, show_confidence)
         Thread.__init__(self)
         self.parrametre = ""
         self.action = "no"

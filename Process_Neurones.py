@@ -6,10 +6,11 @@ def sigmoid_derivee(x):
     return math.exp(-x) / (1+ math.exp(-x))**2
 
 class Neurones(Poids):
-    def __init__(self, name = "poids"):
+    def __init__(self, name = "poids", show_confidence = False):
         Poids.__init__(self, name)
         self.sortie = []
         self.profil_client = "coucou"
+        self.show_confidence = show_confidence
 
     def sigmoid (self, x):
         try:

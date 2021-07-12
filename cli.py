@@ -18,19 +18,20 @@ def help():
     print("python " + doc_name + " : show the prediction of a profile and the reality")
     print("")
     print("Options :")
+    print("-c, -confidence : show the confidence")
+    print("-h, -help : show this message and stop the programm")
+    print("-n, -name name : change the name of the csv file name")
     print("-p, -process int : change the default number of heart use (6 by default)")
     print("-t, -thread int : use the threading module and no more the processing module. Nbr optionnal")
-    print("-n, -name name : change the name of the csv file name")
     print("-T, -train int : make the training 'int' times")
-    print("-h, -help : show this message and stop the programm")
 
 
 def training(lst_users, to_predict):
-    global ia, population, name, train
+    global ia, population, name, train, show_confidence
     if ia == "process":
-        Einstein = Process.Foret(population, name)
+        Einstein = Process.Foret(population, name, show_confidence)
     else:
-        Einstein = Thread.Foret(population, name)
+        Einstein = Thread.Foret(population, name, show_confidence)
 
     Einstein.training(lst_users, train)
     print("The prediction is :")
@@ -73,6 +74,9 @@ def parcing():
         elif argv[argv_count][1:] == "help" or argv[argv_count][1:] == "h":
             help()
             return 1
+        elif argv[argv_count][1:] == "confidence" or argv[argv_count][1:] == "c":
+            global show_confidence
+            show_confidence = True
     
 # name, action, horreur, policier, romantique, dessin_anime, age, bac, sexe
 USERS = []
@@ -81,6 +85,7 @@ population = 6
 argv_count = 1
 name = "poid"
 train = 0
+show_confidence = False
 
 
 if __name__ == "__main__":
