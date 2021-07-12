@@ -141,7 +141,7 @@ if __name__ == "__main__":
         argv_count += 1
 
     if quit:
-        init(Entree). # Create the DB
+        init(Entree) # Create the DB
         
         # We're using 80% of the DB to the training and 20% to take an unknown profil
         len_users = len(USERS)
