@@ -11,6 +11,7 @@ class profile:
         self.bac = bac
         self.sexe = sexe
 
+    # Make the sentence of liking or disliking
     def film_without_confidence(self, test, element):
         if (test > 0.5):
             try:
@@ -35,6 +36,7 @@ class profile:
         else:
             print("Bad probability")
 
+    # Make the sentence of liking or disliking element with a persent of confidence 
     def film_with_confidence(self, test, element):
         if (test == 1):
             try:
@@ -81,6 +83,7 @@ class profile:
         else:
             print("Bad probability")
 
+    # Make sentences who's presenting the person
     def affich(self, show_confidence = False):
         if (self.bac == 1):
             bac = "get a bac"
