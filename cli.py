@@ -3,6 +3,8 @@ from random import randint
 from profile import profile
 import Process, Thread
 
+# Create the people's profiles.
+# The structure is : name, action, horreur, policier, romantique, dessin_anime, age, bac, sexe
 def init(famille):
     for j in famille:
         for i in j[1:]:
@@ -11,6 +13,7 @@ def init(famille):
             except:
                 print(j[0] + ' ' + i[0])
 
+# Create the help menu
 doc_name = "cli.py"
 def help():
     print("-------------------------------------------- help --------------------------------------------")
@@ -25,11 +28,14 @@ def help():
     print("-t, -thread int : use the threading module and no more the processing module. Nbr optionnal")
     print("-T, -train int : make the training 'int' times")
 
-
+    # Execute the training of the IA
 def training(lst_users, to_predict):
     global ia, population, name, train, show_confidence
+    
+    # Whith using the multiprocessing module ...
     if ia == "process":
         Einstein = Process.Foret(population, name, show_confidence)
+    # ... or the multithreading mudule
     else:
         Einstein = Thread.Foret(population, name, show_confidence)
 
@@ -37,6 +43,7 @@ def training(lst_users, to_predict):
     print("The prediction is :")
     Einstein.prediction(to_predict)
 
+# Parce the Command Line
 def parcing():
     global argv_count
     global population 
@@ -78,7 +85,8 @@ def parcing():
             global show_confidence
             show_confidence = True
     
-# name, action, horreur, policier, romantique, dessin_anime, age, bac, sexe
+
+# Inicialising globals
 USERS = []
 ia = "process"
 population = 6
@@ -89,6 +97,7 @@ show_confidence = False
 
 
 if __name__ == "__main__":
+    # Create some Family
     Entree = [
         [ "puce", ["Bernard", 1, 1, 1, 0, 1, 80, 0, 1], ["Bernadette", 0, 0, 1, 1, 1, 81, 0, 0],
                         ["Jack", 1, 1, 1, 0, 0, 40, 0, 1], ["Tulipe", 0, 1, 0, 1, 1, 43, 0, 0],
@@ -122,6 +131,7 @@ if __name__ == "__main__":
                             ["Augustin", 1, 0, 1, 0, 0, 10, 0, 0] ]
           ]
     
+    # Annalyse the Command Line and quit if the help module is show.
     quit = True
     argc = len(argv)
     while argc > argv_count:
@@ -131,11 +141,14 @@ if __name__ == "__main__":
         argv_count += 1
 
     if quit:
-        init(Entree)
+        init(Entree). # Create the DB
+        
+        # We're using 80% of the DB to the training and 20% to take an unknown profil
         len_users = len(USERS)
         boucle = int(len_users - len_users * 0.2)
         j = randint(boucle, len_users-1)
 
+        # Make x times the training. The varrable is "train" and is by default 0
         training(USERS[:boucle], [ USERS[j].age, USERS[j].bac, USERS[j].sexe ])
         print("It will be :")
         USERS[j].affich()
