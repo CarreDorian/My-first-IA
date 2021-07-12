@@ -1,13 +1,12 @@
 from profile import profile
-from Thread_Neurones import *
+from Thread_Neurone import Threading
 from profile import *
-from threading import Thread, RLock
 
 class Foret():
     def __init__(self, nbr_Neurones = 1, name = "poid"):
         self.arbres = []
         for i in range(nbr_Neurones):
-            self.arbres.append(Neurones("csv/" + name + str(i+1)))
+            self.arbres.append(Threading("csv/" + name + str(i+1)))
     
     def training(self, lst_users, repeat = 1):
         for _ in range(repeat):
@@ -48,4 +47,5 @@ class Foret():
         self.profil_client = profile("client", self.action, self.horreur, self.policier, self.romantique, self.dessin_anime, parrametre[0], parrametre[1], parrametre[2])
         self.profil_client.affich()
 
-        
+    def put(self, pile, sortie, profil_client):
+        pass

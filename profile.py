@@ -84,6 +84,3 @@ class profile:
             pass
         print (affich)
 
-
-    56
-    100

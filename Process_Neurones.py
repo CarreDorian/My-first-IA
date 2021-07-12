@@ -1,5 +1,4 @@
 import math
-from multiprocessing import Queue
 from profile import profile
 from Save import *
 
@@ -50,7 +49,7 @@ class Neurones(Poids):
                 self.backword(entree, result, self.sortie)
         self.save()
 
-    def prediction(self, pile, entree = []):
+    def prediction(self, parent, pile, entree):
         try:
             for i in range(3):
                 if 0 > entree[i]:
@@ -64,8 +63,7 @@ class Neurones(Poids):
             return
     
         self.forword(entree)
-        pile.put(self.sortie)
-        pile.put(self.profil_client)
+        parent.put(pile, self.sortie, self.profil_client)
 
     def forword(self, entree_matrice):
         self.W1 = [ 

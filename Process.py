@@ -28,7 +28,7 @@ class Foret():
         piles = []
         for i in self.arbres:
             piles.append(Queue())
-            coeur.append(Process(target=i.prediction, args=(piles[index], parrametre)))
+            coeur.append(Process(target=i.prediction, args=(self, piles[index], parrametre)))
             coeur[index].start()
             index += 1
         for i in range(index):
@@ -51,3 +51,6 @@ class Foret():
         self.profil_client = profile("client", self.action, self.horreur, self.policier, self.romantique, self.dessin_anime, parrametre[0], parrametre[1], parrametre[2])
         self.profil_client.affich()
 
+    def put(self, pile, sortie, profil_client):
+        pile.put(sortie)
+        pile.put(profil_client)
