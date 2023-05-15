@@ -2,7 +2,7 @@
 
 This is my thirst previsionnal deep learning algorythme.
 
-To use it, make sure you download python and tape :
+To use it, make sure you download python, go to the IA document and tape :
 python cli.py -h
 
 After this, you will seen a short documentation, and the possibilites of the code.
