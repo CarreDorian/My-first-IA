@@ -12,7 +12,7 @@ class profile:
         self.sexe = sexe
 
     def film(self, test, element):
-        test = (round(test, 5) - 0.5) * 200
+        test = round((test - 0.5) * 200, 2)
         if (test == 100):
             try:
                 self.like += element + ", "
