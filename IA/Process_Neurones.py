@@ -19,8 +19,6 @@ class Neurones(Poids):
             return 0
 
     def training(self, parrametres, repeat):
-        # print(parrametre)
-        print("coucou")
         for i in range(repeat):
             for parrametre in parrametres:
                 parrametre = parrametre.lst
